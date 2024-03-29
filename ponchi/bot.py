@@ -17,6 +17,9 @@ dp = Dispatcher()
 
 @dp.message()
 async def message(message: types.Message) -> None:
+    """
+    Redirect all input to bot_handler
+    """
     await bot_handler.bot_handler(message)
 
 

@@ -9,15 +9,16 @@ def print_help():
 
 
 if len(argv) < 2:
-    argv.append(None)
+    argv.append("")
 
 if argv[1] == "createapp":
     print("Creating app...")
     create()
-    print("Complite.")
+    print("Complete.")
 
 elif argv[1] == "start":
-    import ponchi.bot
+    import importlib
+    importlib.import_module("ponchi.bot")
 
 elif argv[1] == "help":
     print_help()

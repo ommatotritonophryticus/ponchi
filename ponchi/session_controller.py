@@ -7,18 +7,20 @@ from .database import DB
 class SessionController:
 
     async def real_init(self) -> 'SessionController':
+        """
+        Real init.
+
+        It exists because it is impossible to do asynchronous __init__
+        """
         self.session = await DB.get_session(self.chat_id)
         if '_function' not in self.session.keys():
             self.session['_function'] = 'start'
         return self
 
     def __init__(self, chat_id):
-        '''
-        Session object
-        if session not exist create new session
-
-        :param chat_id:
-        '''
+        """
+        Sync init
+        """
         self.session = None
         self.chat_id: int = chat_id
 

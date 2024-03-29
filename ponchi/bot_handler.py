@@ -6,6 +6,9 @@ from ponchi.application import app
 
 
 async def bot_handler(message: types.Message) -> None:
+    """
+    Handles incoming messages from the bot.
+    """
     session: SessionController = await SessionController(message.chat.id).real_init()
 
     current_function: Callable = getattr(app, await session.get_data('_function'))

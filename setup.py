@@ -15,7 +15,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/ommatotritonophryticus/ponchi',
     packages=['ponchi', 'ponchi.clear_app', 'ponchi.databases'],
-    install_requires=['aiogram==3.4.1', 'peewee==3.17.1', 'redis==5.0.3'],
+    install_requires=['aiogram==3.4.1', 'redis==5.0.3'],
     classifiers=[
         'Programming Language :: Python :: 3.11',
         'License :: OSI Approved :: MIT License',

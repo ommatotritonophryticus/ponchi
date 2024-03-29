@@ -15,6 +15,15 @@ class TestDB(unittest.IsolatedAsyncioTestCase):
 
     @patch('ponchi.databases.redis.redis.Redis', new_callable=AsyncMock)
     async def test_get_session_existing(self, mock_redis):
+        """
+        Test the `get_session` method when a session exists in the database.
+
+        Args:
+            mock_redis: An AsyncMock representing the Redis connection.
+
+        Returns:
+            None
+        """
         chat_id = 123
         redis_mock_instance = AsyncMock()
         redis_mock_instance.exists.return_value = True
@@ -27,6 +36,15 @@ class TestDB(unittest.IsolatedAsyncioTestCase):
 
     @patch('ponchi.databases.redis.redis.Redis', new_callable=AsyncMock)
     async def test_get_session_non_existing(self, mock_redis):
+        """
+           Test the `get_session` method when no session exists in the database.
+
+           Args:
+               mock_redis: An AsyncMock representing the Redis connection.
+
+           Returns:
+               None
+           """
         chat_id = 123
         mock_redis_instance = mock_redis.return_value
         mock_redis_instance.exists.return_value = False
@@ -37,6 +55,15 @@ class TestDB(unittest.IsolatedAsyncioTestCase):
 
     @patch('ponchi.databases.redis.redis.Redis', new_callable=AsyncMock)
     async def test_write_session(self, mock_redis):
+        """
+        Test the `write_session` method.
+
+        Args:
+            mock_redis: An AsyncMock representing the Redis connection.
+
+        Returns:
+            None
+        """
         chat_id = 123
         data = {'key1': 'value1', 'key2': 'value2'}
         mock_redis_instance = mock_redis.return_value
