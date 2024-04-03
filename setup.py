@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -14,7 +14,8 @@ setup(
     long_description=readme(),
     long_description_content_type='text/markdown',
     url='https://github.com/ommatotritonophryticus/ponchi',
-    packages=['ponchi', 'ponchi.clear_app', 'ponchi.databases'],
+    #packages=['ponchi', 'ponchi.clear_app', 'ponchi.databases', 'ponchi.contrib'],
+    packages=find_packages(),
     install_requires=['aiogram==3.4.1', 'redis==5.0.3'],
     classifiers=[
         'Programming Language :: Python :: 3.11',

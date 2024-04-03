@@ -11,6 +11,20 @@ class DBInterface(ABC):
         ...
 
     @abstractmethod
+    async def read_data(self, key: str) -> Any:
+        """
+        Method of get value from database
+        """
+        ...
+
+    @abstractmethod
+    async def write_data(self, key: str, value: Any) -> bool:
+        """
+        Method of set value to database
+        """
+        ...
+
+    @abstractmethod
     async def get_session(self, chat_id: int) -> Dict[str, Any]:
         """
         Method of obtaining session data

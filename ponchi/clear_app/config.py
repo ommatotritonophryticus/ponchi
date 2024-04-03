@@ -13,3 +13,9 @@ DATABASES = {
 }
 
 DATABASE = DATABASES['fake_db']
+
+'''
+MIDDLEWARE = [
+    'ponchi.contrib.statistic.statistic'
+]
+'''

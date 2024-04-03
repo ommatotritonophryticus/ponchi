@@ -7,6 +7,13 @@ class DB(DBInterface):
     def __init__(self, config: Dict[str, Any]):
         self.fake_key_value_database: Dict[str, Any] = {}
 
+    async def read_data(self, key: str) -> Any:
+        return self.fake_key_value_database[key]
+
+    async def write_data(self, key: str, value: Any) -> bool:
+        self.fake_key_value_database[key] = value
+        return True
+
     async def create_session(self, chat_id) -> Dict[str, Any]:
         self.fake_key_value_database[f'session_{chat_id}'] = {}
         return self.fake_key_value_database[f'session_{chat_id}']
