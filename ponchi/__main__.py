@@ -18,6 +18,11 @@ if argv[1] == "createapp":
 
 elif argv[1] == "start":
     import importlib
+    import logging
+    from ponchi.config import config
+    logging.basicConfig(**config.LOG_CONFIG)
+    log = logging.getLogger('ponchi_init')
+    log.info('Ponchi start init')
     importlib.import_module("ponchi.bot")
 
 elif argv[1] == "help":
