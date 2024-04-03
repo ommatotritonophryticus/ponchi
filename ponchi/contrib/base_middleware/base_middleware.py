@@ -20,13 +20,19 @@ class BaseMiddleware(ABC):
         """
         return self
 
-    async def pre_action(self, message: Message, session: SessionController) -> Tuple[Message, SessionController]:
+    async def pre_action(self,
+                         message: Message,
+                         session: SessionController
+                         ) -> Tuple[Message, SessionController]:
         """
         Action before passing the message and session to the function.
         """
         return message, session
 
-    async def post_action(self, message: Message, session: SessionController) -> Tuple[Message, SessionController]:
+    async def post_action(self,
+                          message: Message,
+                          session: SessionController
+                          ) -> Tuple[Message, SessionController]:
         """
         Action after passing the message and session to the function.
         """

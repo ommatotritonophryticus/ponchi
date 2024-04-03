@@ -1,6 +1,10 @@
+"""
+Contains bot_handler function
+"""
 from typing import Callable
-from aiogram import types
 import logging
+
+from aiogram import types
 
 from ponchi.session_controller import SessionController
 from ponchi.application import app
@@ -35,7 +39,7 @@ async def bot_handler(message: types.Message) -> None:
     logger.debug('Start middleware post-actions')
     new_message, new_session = await middleware.post_action(new_message, new_session)
 
-    if type(next_function) == type(lambda: None):
+    if isinstance(next_function, type(lambda: None)):
         next_function: str = next_function.__name__
 
     logger.debug('Set function="%s" to session=%s', next_function, str(message.chat.id))

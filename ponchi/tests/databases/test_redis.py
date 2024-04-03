@@ -1,17 +1,22 @@
-import asyncio
+"""
+Test for databases.redis
+"""
 import unittest
 from unittest.mock import AsyncMock, patch
 
-from ponchi.databases.redis import DB
+from ponchi.databases.redis import Database
 
 
 class TestDB(unittest.IsolatedAsyncioTestCase):
+    """
+    Unittest class with tests
+    """
     def setUp(self):
         self.config = {
             'host': 'localhost',
             'port': 6379,
         }
-        self.db = DB(self.config)
+        self.db = Database(self.config)
 
     @patch('ponchi.databases.redis.redis.Redis', new_callable=AsyncMock)
     async def test_get_session_existing(self, mock_redis):

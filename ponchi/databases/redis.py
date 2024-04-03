@@ -1,3 +1,6 @@
+"""
+Contains a class for Redis
+"""
 from typing import Dict, Any
 
 import redis.asyncio as redis
@@ -5,7 +8,10 @@ import redis.asyncio as redis
 from .db_interface import DBInterface
 
 
-class DB(DBInterface):
+class Database(DBInterface):
+    """
+    Class for interaction with Redis database
+    """
     def __init__(self, config: Dict[str, Any]):
         self.config: Dict[str, Any] = {key: config[key] for key in config if key != 'type'}
 

@@ -1,3 +1,6 @@
+"""
+Contains the middleware class Statistic
+"""
 import datetime
 import json
 from typing import Tuple
@@ -20,13 +23,19 @@ class Statistic(BaseMiddleware):
 
     async def real_init(self, *args, **kwargs) -> 'BaseMiddleware':
         """
-        In this case, there are no asynchronous operations during initialization, so we just return self.
+        In this case, there are no
+        asynchronous operations during
+        initialization, so we just return self.
         """
         return self
 
-    async def pre_action(self, message: Message, session: SessionController) -> Tuple[Message, SessionController]:
+    async def pre_action(self,
+                         message: Message,
+                         session: SessionController
+                         ) -> Tuple[Message, SessionController]:
         """
-        This function simply records information about the called functions
+        This function simply records
+        information about the called functions
         """
         current_session: int = message.chat.id
         current_function: int = await session.get_data('_function')
@@ -41,9 +50,12 @@ class Statistic(BaseMiddleware):
         })
         return message, session
 
-    async def post_action(self, message: Message, session: SessionController) -> Tuple[Message, SessionController]:
+    async def post_action(self,
+                          message: Message,
+                          session: SessionController
+                          ) -> Tuple[Message, SessionController]:
         """
         This function write information in database
         """
-        await session.DB.write_data('statistic', json.dumps(self.data))
+        await session.database.write_data('statistic', json.dumps(self.data))
         return message, session

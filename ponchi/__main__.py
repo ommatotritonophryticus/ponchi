@@ -1,8 +1,15 @@
-from ponchi.create import create
+"""
+Application entry point
+"""
 from sys import argv
+
+from ponchi.create import create
 
 
 def print_help():
+    """
+    Print help function
+    """
     print("""Type "python3 -m ponchi createapp" to create clear application in current directory
 "python3 -m ponchi start" to start bot
 """)

@@ -1,3 +1,6 @@
+"""
+Contain function to create clear project
+"""
 from shutil import copy
 from pathlib import Path
 

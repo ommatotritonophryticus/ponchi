@@ -1,12 +1,18 @@
+"""
+Contains an imported Database object dependent on the configuration
+"""
 from importlib import import_module
-from .config import config
 import logging
+import sys
+
+from ponchi.databases.db_interface import DBInterface
+from .config import config
 
 logger = logging.getLogger('ponchi.database')
 
 logger.debug('Init database')
 try:
-    DB = import_module(config.DATABASE['type']).DB(config.DATABASE)
+    database: DBInterface = import_module(config.DATABASE['type']).Database(config.DATABASE)
 except:
-    logger.critical('Configuration import error. Check if config.py exists in the current directory.')
-    exit()
+    logger.critical('Database initialization error check DATABASE parameter in config.py')
+    sys.exit(1)
